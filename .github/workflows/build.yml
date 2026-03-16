@@ -12,7 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Build with Maven
+        run: cd tp2-auth && mvn clean package -DskipTests
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6
         env:
