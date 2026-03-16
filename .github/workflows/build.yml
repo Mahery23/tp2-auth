@@ -19,7 +19,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build with Maven
-        run: cd tp2-auth && mvn clean package -DskipTests
+        run: cd tp2-auth && mvn clean verify
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6
         env:
